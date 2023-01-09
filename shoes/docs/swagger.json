@@ -1,0 +1,1012 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Sample CRUD api for shoes_development db",
+        "title": "Sample CRUD api for shoes_development db",
+        "contact": {
+            "name": "Me",
+            "url": "http://me.com/terms.html",
+            "email": "me@me.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/arinternalmetadata_": {
+            "get": {
+                "description": "GetAllArInternalMetadata_ is a handler to get a slice of record(s) from ar_internal_metadata table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ArInternalMetadata_"
+                ],
+                "summary": "Get list of ArInternalMetadata_",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "page requested (defaults to 0)",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "number of records in a page  (defaults to 20)",
+                        "name": "pagesize",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "db sort order column",
+                        "name": "order",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.PagedResults"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "add to add a single record to ar_internal_metadata table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ArInternalMetadata_"
+                ],
+                "summary": "Add an record to ar_internal_metadata table",
+                "parameters": [
+                    {
+                        "description": "Add ArInternalMetadata_",
+                        "name": "ArInternalMetadata_",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.ArInternalMetadata_"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ArInternalMetadata_"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            }
+        },
+        "/arinternalmetadata_/{argKey}": {
+            "get": {
+                "description": "GetArInternalMetadata_ is a function to get a single record from the ar_internal_metadata table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ArInternalMetadata_"
+                ],
+                "summary": "Get record from table ArInternalMetadata_ by  argKey",
+                "operationId": "argKey",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "key",
+                        "name": "argKey",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ArInternalMetadata_"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "ErrNotFound, db record for id not found - returns NotFound HTTP 404 not found error",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a single record from ar_internal_metadata table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ArInternalMetadata_"
+                ],
+                "summary": "Update an record in table ar_internal_metadata",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "key",
+                        "name": "argKey",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update ArInternalMetadata_ record",
+                        "name": "ArInternalMetadata_",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.ArInternalMetadata_"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.ArInternalMetadata_"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a single record from ar_internal_metadata table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ArInternalMetadata_"
+                ],
+                "summary": "Delete a record from ar_internal_metadata",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "key",
+                        "name": "argKey",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/model.ArInternalMetadata_"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            }
+        },
+        "/ddl": {
+            "get": {
+                "description": "GetDdlEndpoints is a function to get a list of ddl endpoints available for tables in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TableInfo"
+                ],
+                "summary": "Gets a list of ddl endpoints available for tables in the shoes_development database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.CrudAPI"
+                        }
+                    }
+                }
+            }
+        },
+        "/ddl/{argID}": {
+            "get": {
+                "description": "GetDdl is a function to get table info for a table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TableInfo"
+                ],
+                "summary": "Get table info for a table in the shoes_development database by argID",
+                "operationId": "argID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "argID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.CrudAPI"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "ErrNotFound, db record for id not found - returns NotFound HTTP 404 not found error",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            }
+        },
+        "/schemamigrations_": {
+            "get": {
+                "description": "GetAllSchemaMigrations_ is a handler to get a slice of record(s) from schema_migrations table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SchemaMigrations_"
+                ],
+                "summary": "Get list of SchemaMigrations_",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "page requested (defaults to 0)",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "number of records in a page  (defaults to 20)",
+                        "name": "pagesize",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "db sort order column",
+                        "name": "order",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.PagedResults"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "add to add a single record to schema_migrations table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SchemaMigrations_"
+                ],
+                "summary": "Add an record to schema_migrations table",
+                "parameters": [
+                    {
+                        "description": "Add SchemaMigrations_",
+                        "name": "SchemaMigrations_",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.SchemaMigrations_"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.SchemaMigrations_"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            }
+        },
+        "/schemamigrations_/{argVersion}": {
+            "get": {
+                "description": "GetSchemaMigrations_ is a function to get a single record from the schema_migrations table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SchemaMigrations_"
+                ],
+                "summary": "Get record from table SchemaMigrations_ by  argVersion",
+                "operationId": "argVersion",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "argVersion",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.SchemaMigrations_"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "ErrNotFound, db record for id not found - returns NotFound HTTP 404 not found error",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a single record from schema_migrations table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SchemaMigrations_"
+                ],
+                "summary": "Update an record in table schema_migrations",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "argVersion",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update SchemaMigrations_ record",
+                        "name": "SchemaMigrations_",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.SchemaMigrations_"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.SchemaMigrations_"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a single record from schema_migrations table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SchemaMigrations_"
+                ],
+                "summary": "Delete a record from schema_migrations",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "version",
+                        "name": "argVersion",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/model.SchemaMigrations_"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            }
+        },
+        "/shoes": {
+            "get": {
+                "description": "GetAllShoes is a handler to get a slice of record(s) from shoes table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shoes"
+                ],
+                "summary": "Get list of Shoes",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "page requested (defaults to 0)",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "number of records in a page  (defaults to 20)",
+                        "name": "pagesize",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "db sort order column",
+                        "name": "order",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.PagedResults"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "add to add a single record to shoes table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shoes"
+                ],
+                "summary": "Add an record to shoes table",
+                "parameters": [
+                    {
+                        "description": "Add Shoes",
+                        "name": "Shoes",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Shoes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Shoes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            }
+        },
+        "/shoes/{argID}": {
+            "get": {
+                "description": "GetShoes is a function to get a single record from the shoes table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shoes"
+                ],
+                "summary": "Get record from table Shoes by  argID",
+                "operationId": "argID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "argID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Shoes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "ErrNotFound, db record for id not found - returns NotFound HTTP 404 not found error",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a single record from shoes table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shoes"
+                ],
+                "summary": "Update an record in table shoes",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "argID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Shoes record",
+                        "name": "Shoes",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Shoes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Shoes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a single record from shoes table in the shoes_development database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shoes"
+                ],
+                "summary": "Delete a record from shoes",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "argID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/model.Shoes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.HTTPError"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "api.CrudAPI": {
+            "type": "object",
+            "properties": {
+                "create_url": {
+                    "type": "string"
+                },
+                "delete_url": {
+                    "type": "string"
+                },
+                "fetch_ddl_url": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "retrieve_many_url": {
+                    "type": "string"
+                },
+                "retrieve_one_url": {
+                    "type": "string"
+                },
+                "table_info": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.TableInfo"
+                },
+                "update_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.HTTPError": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 400
+                },
+                "message": {
+                    "type": "string",
+                    "example": "status bad request"
+                }
+            }
+        },
+        "api.PagedResults": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "page_size": {
+                    "type": "integer"
+                },
+                "total_records": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.ArInternalMetadata_": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "description": "[ 2] created_at                                     datetime             null: false  primary: false  isArray: false  auto: false  col: datetime        len: -1      default: []",
+                    "type": "string"
+                },
+                "key": {
+                    "description": "[ 0] key                                            varchar(255)         null: false  primary: true   isArray: false  auto: false  col: varchar         len: 255     default: []",
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "[ 3] updated_at                                     datetime             null: false  primary: false  isArray: false  auto: false  col: datetime        len: -1      default: []",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "[ 1] value                                          varchar(255)         null: true   primary: false  isArray: false  auto: false  col: varchar         len: 255     default: []",
+                    "type": "string"
+                }
+            }
+        },
+        "model.ColumnInfo": {
+            "type": "object",
+            "properties": {
+                "column_length": {
+                    "type": "integer"
+                },
+                "column_type": {
+                    "type": "string"
+                },
+                "comment": {
+                    "type": "string"
+                },
+                "database_type_name": {
+                    "type": "string"
+                },
+                "database_type_pretty": {
+                    "type": "string"
+                },
+                "default_value": {
+                    "type": "string"
+                },
+                "go_field_name": {
+                    "type": "string"
+                },
+                "go_field_type": {
+                    "type": "string"
+                },
+                "index": {
+                    "type": "integer"
+                },
+                "is_array": {
+                    "type": "boolean"
+                },
+                "is_auto_increment": {
+                    "type": "boolean"
+                },
+                "is_nullable": {
+                    "type": "boolean"
+                },
+                "is_primary_key": {
+                    "type": "boolean"
+                },
+                "json_field_name": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "protobuf_field_name": {
+                    "type": "string"
+                },
+                "protobuf_field_pos": {
+                    "type": "integer"
+                },
+                "protobuf_field_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.SchemaMigrations_": {
+            "type": "object",
+            "properties": {
+                "version": {
+                    "description": "[ 0] version                                        varchar(255)         null: false  primary: true   isArray: false  auto: false  col: varchar         len: 255     default: []",
+                    "type": "string"
+                }
+            }
+        },
+        "model.Shoes": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "description": "[ 1] brand                                          varchar(255)         null: true   primary: false  isArray: false  auto: false  col: varchar         len: 255     default: []",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "[ 7] created_at                                     datetime             null: false  primary: false  isArray: false  auto: false  col: datetime        len: -1      default: []",
+                    "type": "string"
+                },
+                "favorite": {
+                    "description": "[ 4] favorite                                       tinyint              null: true   primary: false  isArray: false  auto: false  col: tinyint         len: -1      default: []",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "[ 0] id                                             bigint               null: false  primary: true   isArray: false  auto: true   col: bigint          len: -1      default: []",
+                    "type": "integer"
+                },
+                "model": {
+                    "description": "[ 2] model                                          varchar(255)         null: true   primary: false  isArray: false  auto: false  col: varchar         len: 255     default: []",
+                    "type": "string"
+                },
+                "occasion": {
+                    "description": "[ 3] occasion                                       varchar(255)         null: true   primary: false  isArray: false  auto: false  col: varchar         len: 255     default: []",
+                    "type": "string"
+                },
+                "pic": {
+                    "description": "[ 5] pic                                            varchar(255)         null: true   primary: false  isArray: false  auto: false  col: varchar         len: 255     default: []",
+                    "type": "string"
+                },
+                "picture": {
+                    "description": "[ 6] picture                                        blob                 null: true   primary: false  isArray: false  auto: false  col: blob            len: -1      default: []",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "updated_at": {
+                    "description": "[ 8] updated_at                                     datetime             null: false  primary: false  isArray: false  auto: false  col: datetime        len: -1      default: []",
+                    "type": "string"
+                }
+            }
+        },
+        "model.TableInfo": {
+            "type": "object",
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ColumnInfo"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

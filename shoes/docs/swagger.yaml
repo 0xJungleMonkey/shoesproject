@@ -1,0 +1,725 @@
+basePath: /
+definitions:
+  api.CrudAPI:
+    properties:
+      create_url:
+        type: string
+      delete_url:
+        type: string
+      fetch_ddl_url:
+        type: string
+      name:
+        type: string
+      retrieve_many_url:
+        type: string
+      retrieve_one_url:
+        type: string
+      table_info:
+        $ref: '#/definitions/model.TableInfo'
+        type: object
+      update_url:
+        type: string
+    type: object
+  api.HTTPError:
+    properties:
+      code:
+        example: 400
+        type: integer
+      message:
+        example: status bad request
+        type: string
+    type: object
+  api.PagedResults:
+    properties:
+      data:
+        type: object
+      page:
+        type: integer
+      page_size:
+        type: integer
+      total_records:
+        type: integer
+    type: object
+  model.ArInternalMetadata_:
+    properties:
+      created_at:
+        description: '[ 2] created_at                                     datetime             null:
+          false  primary: false  isArray: false  auto: false  col: datetime        len:
+          -1      default: []'
+        type: string
+      key:
+        description: '[ 0] key                                            varchar(255)         null:
+          false  primary: true   isArray: false  auto: false  col: varchar         len:
+          255     default: []'
+        type: string
+      updated_at:
+        description: '[ 3] updated_at                                     datetime             null:
+          false  primary: false  isArray: false  auto: false  col: datetime        len:
+          -1      default: []'
+        type: string
+      value:
+        description: '[ 1] value                                          varchar(255)         null:
+          true   primary: false  isArray: false  auto: false  col: varchar         len:
+          255     default: []'
+        type: string
+    type: object
+  model.ColumnInfo:
+    properties:
+      column_length:
+        type: integer
+      column_type:
+        type: string
+      comment:
+        type: string
+      database_type_name:
+        type: string
+      database_type_pretty:
+        type: string
+      default_value:
+        type: string
+      go_field_name:
+        type: string
+      go_field_type:
+        type: string
+      index:
+        type: integer
+      is_array:
+        type: boolean
+      is_auto_increment:
+        type: boolean
+      is_nullable:
+        type: boolean
+      is_primary_key:
+        type: boolean
+      json_field_name:
+        type: string
+      name:
+        type: string
+      notes:
+        type: string
+      protobuf_field_name:
+        type: string
+      protobuf_field_pos:
+        type: integer
+      protobuf_field_type:
+        type: string
+    type: object
+  model.SchemaMigrations_:
+    properties:
+      version:
+        description: '[ 0] version                                        varchar(255)         null:
+          false  primary: true   isArray: false  auto: false  col: varchar         len:
+          255     default: []'
+        type: string
+    type: object
+  model.Shoes:
+    properties:
+      brand:
+        description: '[ 1] brand                                          varchar(255)         null:
+          true   primary: false  isArray: false  auto: false  col: varchar         len:
+          255     default: []'
+        type: string
+      created_at:
+        description: '[ 7] created_at                                     datetime             null:
+          false  primary: false  isArray: false  auto: false  col: datetime        len:
+          -1      default: []'
+        type: string
+      favorite:
+        description: '[ 4] favorite                                       tinyint              null:
+          true   primary: false  isArray: false  auto: false  col: tinyint         len:
+          -1      default: []'
+        type: string
+      id:
+        description: '[ 0] id                                             bigint               null:
+          false  primary: true   isArray: false  auto: true   col: bigint          len:
+          -1      default: []'
+        type: integer
+      model:
+        description: '[ 2] model                                          varchar(255)         null:
+          true   primary: false  isArray: false  auto: false  col: varchar         len:
+          255     default: []'
+        type: string
+      occasion:
+        description: '[ 3] occasion                                       varchar(255)         null:
+          true   primary: false  isArray: false  auto: false  col: varchar         len:
+          255     default: []'
+        type: string
+      pic:
+        description: '[ 5] pic                                            varchar(255)         null:
+          true   primary: false  isArray: false  auto: false  col: varchar         len:
+          255     default: []'
+        type: string
+      picture:
+        description: '[ 6] picture                                        blob                 null:
+          true   primary: false  isArray: false  auto: false  col: blob            len:
+          -1      default: []'
+        items:
+          type: integer
+        type: array
+      updated_at:
+        description: '[ 8] updated_at                                     datetime             null:
+          false  primary: false  isArray: false  auto: false  col: datetime        len:
+          -1      default: []'
+        type: string
+    type: object
+  model.TableInfo:
+    properties:
+      columns:
+        items:
+          $ref: '#/definitions/model.ColumnInfo'
+        type: array
+      name:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: me@me.com
+    name: Me
+    url: http://me.com/terms.html
+  description: Sample CRUD api for shoes_development db
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sample CRUD api for shoes_development db
+  version: "1.0"
+paths:
+  /arinternalmetadata_:
+    get:
+      consumes:
+      - application/json
+      description: GetAllArInternalMetadata_ is a handler to get a slice of record(s)
+        from ar_internal_metadata table in the shoes_development database
+      parameters:
+      - description: page requested (defaults to 0)
+        in: query
+        name: page
+        type: integer
+      - description: number of records in a page  (defaults to 20)
+        in: query
+        name: pagesize
+        type: integer
+      - description: db sort order column
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.PagedResults'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Get list of ArInternalMetadata_
+      tags:
+      - ArInternalMetadata_
+    post:
+      consumes:
+      - application/json
+      description: add to add a single record to ar_internal_metadata table in the
+        shoes_development database
+      parameters:
+      - description: Add ArInternalMetadata_
+        in: body
+        name: ArInternalMetadata_
+        required: true
+        schema:
+          $ref: '#/definitions/model.ArInternalMetadata_'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ArInternalMetadata_'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Add an record to ar_internal_metadata table
+      tags:
+      - ArInternalMetadata_
+  /arinternalmetadata_/{argKey}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a single record from ar_internal_metadata table in the shoes_development
+        database
+      parameters:
+      - description: key
+        in: path
+        name: argKey
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/model.ArInternalMetadata_'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Delete a record from ar_internal_metadata
+      tags:
+      - ArInternalMetadata_
+    get:
+      consumes:
+      - application/json
+      description: GetArInternalMetadata_ is a function to get a single record from
+        the ar_internal_metadata table in the shoes_development database
+      operationId: argKey
+      parameters:
+      - description: key
+        in: path
+        name: argKey
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ArInternalMetadata_'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: ErrNotFound, db record for id not found - returns NotFound
+            HTTP 404 not found error
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Get record from table ArInternalMetadata_ by  argKey
+      tags:
+      - ArInternalMetadata_
+    put:
+      consumes:
+      - application/json
+      description: Update a single record from ar_internal_metadata table in the shoes_development
+        database
+      parameters:
+      - description: key
+        in: path
+        name: argKey
+        required: true
+        type: string
+      - description: Update ArInternalMetadata_ record
+        in: body
+        name: ArInternalMetadata_
+        required: true
+        schema:
+          $ref: '#/definitions/model.ArInternalMetadata_'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ArInternalMetadata_'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Update an record in table ar_internal_metadata
+      tags:
+      - ArInternalMetadata_
+  /ddl:
+    get:
+      consumes:
+      - application/json
+      description: GetDdlEndpoints is a function to get a list of ddl endpoints available
+        for tables in the shoes_development database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.CrudAPI'
+      summary: Gets a list of ddl endpoints available for tables in the shoes_development
+        database
+      tags:
+      - TableInfo
+  /ddl/{argID}:
+    get:
+      consumes:
+      - application/json
+      description: GetDdl is a function to get table info for a table in the shoes_development
+        database
+      operationId: argID
+      parameters:
+      - description: id
+        in: path
+        name: argID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.CrudAPI'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: ErrNotFound, db record for id not found - returns NotFound
+            HTTP 404 not found error
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Get table info for a table in the shoes_development database by argID
+      tags:
+      - TableInfo
+  /schemamigrations_:
+    get:
+      consumes:
+      - application/json
+      description: GetAllSchemaMigrations_ is a handler to get a slice of record(s)
+        from schema_migrations table in the shoes_development database
+      parameters:
+      - description: page requested (defaults to 0)
+        in: query
+        name: page
+        type: integer
+      - description: number of records in a page  (defaults to 20)
+        in: query
+        name: pagesize
+        type: integer
+      - description: db sort order column
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.PagedResults'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Get list of SchemaMigrations_
+      tags:
+      - SchemaMigrations_
+    post:
+      consumes:
+      - application/json
+      description: add to add a single record to schema_migrations table in the shoes_development
+        database
+      parameters:
+      - description: Add SchemaMigrations_
+        in: body
+        name: SchemaMigrations_
+        required: true
+        schema:
+          $ref: '#/definitions/model.SchemaMigrations_'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.SchemaMigrations_'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Add an record to schema_migrations table
+      tags:
+      - SchemaMigrations_
+  /schemamigrations_/{argVersion}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a single record from schema_migrations table in the shoes_development
+        database
+      parameters:
+      - description: version
+        in: path
+        name: argVersion
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/model.SchemaMigrations_'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Delete a record from schema_migrations
+      tags:
+      - SchemaMigrations_
+    get:
+      consumes:
+      - application/json
+      description: GetSchemaMigrations_ is a function to get a single record from
+        the schema_migrations table in the shoes_development database
+      operationId: argVersion
+      parameters:
+      - description: version
+        in: path
+        name: argVersion
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.SchemaMigrations_'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: ErrNotFound, db record for id not found - returns NotFound
+            HTTP 404 not found error
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Get record from table SchemaMigrations_ by  argVersion
+      tags:
+      - SchemaMigrations_
+    put:
+      consumes:
+      - application/json
+      description: Update a single record from schema_migrations table in the shoes_development
+        database
+      parameters:
+      - description: version
+        in: path
+        name: argVersion
+        required: true
+        type: string
+      - description: Update SchemaMigrations_ record
+        in: body
+        name: SchemaMigrations_
+        required: true
+        schema:
+          $ref: '#/definitions/model.SchemaMigrations_'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.SchemaMigrations_'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Update an record in table schema_migrations
+      tags:
+      - SchemaMigrations_
+  /shoes:
+    get:
+      consumes:
+      - application/json
+      description: GetAllShoes is a handler to get a slice of record(s) from shoes
+        table in the shoes_development database
+      parameters:
+      - description: page requested (defaults to 0)
+        in: query
+        name: page
+        type: integer
+      - description: number of records in a page  (defaults to 20)
+        in: query
+        name: pagesize
+        type: integer
+      - description: db sort order column
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.PagedResults'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Get list of Shoes
+      tags:
+      - Shoes
+    post:
+      consumes:
+      - application/json
+      description: add to add a single record to shoes table in the shoes_development
+        database
+      parameters:
+      - description: Add Shoes
+        in: body
+        name: Shoes
+        required: true
+        schema:
+          $ref: '#/definitions/model.Shoes'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Shoes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Add an record to shoes table
+      tags:
+      - Shoes
+  /shoes/{argID}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a single record from shoes table in the shoes_development
+        database
+      parameters:
+      - description: id
+        in: path
+        name: argID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/model.Shoes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Delete a record from shoes
+      tags:
+      - Shoes
+    get:
+      consumes:
+      - application/json
+      description: GetShoes is a function to get a single record from the shoes table
+        in the shoes_development database
+      operationId: argID
+      parameters:
+      - description: id
+        in: path
+        name: argID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Shoes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: ErrNotFound, db record for id not found - returns NotFound
+            HTTP 404 not found error
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Get record from table Shoes by  argID
+      tags:
+      - Shoes
+    put:
+      consumes:
+      - application/json
+      description: Update a single record from shoes table in the shoes_development
+        database
+      parameters:
+      - description: id
+        in: path
+        name: argID
+        required: true
+        type: integer
+      - description: Update Shoes record
+        in: body
+        name: Shoes
+        required: true
+        schema:
+          $ref: '#/definitions/model.Shoes'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Shoes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.HTTPError'
+      summary: Update an record in table shoes
+      tags:
+      - Shoes
+swagger: "2.0"
