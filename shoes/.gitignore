@@ -6,7 +6,7 @@
 *.dll
 *.so
 *.dylib
-go.sum
+# go.sum
 
 # Test binary, built with: go test -c
 *.test
@@ -17,7 +17,7 @@ go.sum
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-bin/
+# bin/
 .idea/
 
 
