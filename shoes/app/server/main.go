@@ -16,8 +16,8 @@ import (
 	"github.com/droundy/goopt"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
-	"github.com/swaggo/files"       // swagger embed files
-	"github.com/swaggo/gin-swagger" // gin-swagger middleware
+	swaggerFiles "github.com/swaggo/files"     // swagger embed files
+	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
 
 	"shoes/api"
 	"shoes/dao"
@@ -50,6 +50,7 @@ var (
 
 // GinServer launch gin server
 func GinServer() (err error) {
+
 	url := ginSwagger.URL("https://xinqi.dev:443/swagger/doc.json") // The url pointing to API definition
 
 	router := gin.Default()

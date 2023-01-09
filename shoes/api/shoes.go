@@ -46,6 +46,11 @@ func configGinShoesRouter(router gin.IRoutes) {
 // @Router /shoes [get]
 // http "https://xinqi.dev:443/shoes?page=0&pagesize=20" X-Api-User:user123
 func GetAllShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	//Allow CORS here By * or specific origin
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	// return "OKOK"
 	ctx := initializeContext(r)
 	page, err := readInt(r, "page", 0)
 	if err != nil || page < 0 {
@@ -90,6 +95,11 @@ func GetAllShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 // @Router /shoes/{argID} [get]
 // http "https://xinqi.dev:443/shoes/1" X-Api-User:user123
 func GetShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	//Allow CORS here By * or specific origin
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	// return "OKOK"
 	ctx := initializeContext(r)
 
 	argID, err := parseInt64(ps, "argID")
@@ -125,6 +135,11 @@ func GetShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 // @Router /shoes [post]
 // echo '{"id": 29,"brand": "RShpwThAcDuyXYlKkhEqyxEnZ","model": "rieviFhXURExoHrsELXhAagqX","occasion": "bgsCKKOAdkdcBMZCBYsEHwHhu","favorite": 38,"pic": "xRtiCXYATbgHhjlVUFoobIHuX","picture": "AUIfPFpeP04wHF5fYDAeMgVjA0pJGgQwMwM7G2FZAyJYXiwlRitURzsPUCAcOCcbRDY4Cz0oNUATJxVGSyYwTT8HPSJdGB5cAWALQzxiHyoHUA4XCjhj","created_at": "2257-05-16T04:31:44.715969549-04:00","updated_at": "2243-06-27T14:24:20.917684743-04:00"}' | http POST "https://xinqi.dev:443/shoes" X-Api-User:user123
 func AddShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	//Allow CORS here By * or specific origin
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	// return "OKOK"
 	ctx := initializeContext(r)
 	shoes := &model.Shoes{}
 
@@ -173,6 +188,11 @@ func AddShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 // @Router /shoes/{argID} [put]
 // echo '{"id": 29,"brand": "RShpwThAcDuyXYlKkhEqyxEnZ","model": "rieviFhXURExoHrsELXhAagqX","occasion": "bgsCKKOAdkdcBMZCBYsEHwHhu","favorite": 38,"pic": "xRtiCXYATbgHhjlVUFoobIHuX","picture": "AUIfPFpeP04wHF5fYDAeMgVjA0pJGgQwMwM7G2FZAyJYXiwlRitURzsPUCAcOCcbRDY4Cz0oNUATJxVGSyYwTT8HPSJdGB5cAWALQzxiHyoHUA4XCjhj","created_at": "2257-05-16T04:31:44.715969549-04:00","updated_at": "2243-06-27T14:24:20.917684743-04:00"}' | http PUT "https://xinqi.dev:443/shoes/1"  X-Api-User:user123
 func UpdateShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	//Allow CORS here By * or specific origin
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	// return "OKOK"
 	ctx := initializeContext(r)
 
 	argID, err := parseInt64(ps, "argID")
@@ -227,6 +247,11 @@ func UpdateShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 // @Router /shoes/{argID} [delete]
 // http DELETE "https://xinqi.dev:443/shoes/1" X-Api-User:user123
 func DeleteShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	//Allow CORS here By * or specific origin
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	// return "OKOK"
 	ctx := initializeContext(r)
 
 	argID, err := parseInt64(ps, "argID")
