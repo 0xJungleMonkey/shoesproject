@@ -16,12 +16,11 @@ import (
 	"github.com/droundy/goopt"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
-	swaggerFiles "github.com/swaggo/files"     // swagger embed files
-	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
+	"github.com/swaggo/files"       // swagger embed files
+	"github.com/swaggo/gin-swagger" // gin-swagger middleware
 
 	"shoes/api"
 	"shoes/dao"
-
 	_ "shoes/docs"
 	"shoes/model"
 )
@@ -51,7 +50,7 @@ var (
 
 // GinServer launch gin server
 func GinServer() (err error) {
-	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") // The url pointing to API definition
+	url := ginSwagger.URL("https://xinqi.dev:443/swagger/doc.json") // The url pointing to API definition
 
 	router := gin.Default()
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
@@ -77,7 +76,7 @@ func GinServer() (err error) {
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
-// @host localhost:8080
+// @host xinqi.dev:443
 // @BasePath /
 func main() {
 	OsSignal = make(chan os.Signal, 1)

@@ -44,7 +44,7 @@ func configGinShoesRouter(router gin.IRoutes) {
 // @Failure 400 {object} api.HTTPError
 // @Failure 404 {object} api.HTTPError
 // @Router /shoes [get]
-// http "http://localhost:8080/shoes?page=0&pagesize=20" X-Api-User:user123
+// http "https://xinqi.dev:443/shoes?page=0&pagesize=20" X-Api-User:user123
 func GetAllShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	ctx := initializeContext(r)
 	page, err := readInt(r, "page", 0)
@@ -88,7 +88,7 @@ func GetAllShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 // @Failure 400 {object} api.HTTPError
 // @Failure 404 {object} api.HTTPError "ErrNotFound, db record for id not found - returns NotFound HTTP 404 not found error"
 // @Router /shoes/{argID} [get]
-// http "http://localhost:8080/shoes/1" X-Api-User:user123
+// http "https://xinqi.dev:443/shoes/1" X-Api-User:user123
 func GetShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	ctx := initializeContext(r)
 
@@ -123,7 +123,7 @@ func GetShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 // @Failure 400 {object} api.HTTPError
 // @Failure 404 {object} api.HTTPError
 // @Router /shoes [post]
-// echo '{"id": 3,"brand": "NbrbtERxigVhMZdwDhCXfqlxp","model": "ldPplaIdqvMsaHlkjAiffImld","occasion": "nevueHgAeEnHWlXUljQYbYkMo","favorite": 47,"pic": "AKZyxpUOoYaqliuGuWwhueEyb","picture": "RCRWHiBQDlkMK2FEJhJKM15BXxseHRco","created_at": "2177-09-12T19:31:57.746575425-04:00","updated_at": "2161-04-02T18:21:46.101816943-04:00"}' | http POST "http://localhost:8080/shoes" X-Api-User:user123
+// echo '{"id": 29,"brand": "RShpwThAcDuyXYlKkhEqyxEnZ","model": "rieviFhXURExoHrsELXhAagqX","occasion": "bgsCKKOAdkdcBMZCBYsEHwHhu","favorite": 38,"pic": "xRtiCXYATbgHhjlVUFoobIHuX","picture": "AUIfPFpeP04wHF5fYDAeMgVjA0pJGgQwMwM7G2FZAyJYXiwlRitURzsPUCAcOCcbRDY4Cz0oNUATJxVGSyYwTT8HPSJdGB5cAWALQzxiHyoHUA4XCjhj","created_at": "2257-05-16T04:31:44.715969549-04:00","updated_at": "2243-06-27T14:24:20.917684743-04:00"}' | http POST "https://xinqi.dev:443/shoes" X-Api-User:user123
 func AddShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	ctx := initializeContext(r)
 	shoes := &model.Shoes{}
@@ -171,7 +171,7 @@ func AddShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 // @Failure 400 {object} api.HTTPError
 // @Failure 404 {object} api.HTTPError
 // @Router /shoes/{argID} [put]
-// echo '{"id": 3,"brand": "NbrbtERxigVhMZdwDhCXfqlxp","model": "ldPplaIdqvMsaHlkjAiffImld","occasion": "nevueHgAeEnHWlXUljQYbYkMo","favorite": 47,"pic": "AKZyxpUOoYaqliuGuWwhueEyb","picture": "RCRWHiBQDlkMK2FEJhJKM15BXxseHRco","created_at": "2177-09-12T19:31:57.746575425-04:00","updated_at": "2161-04-02T18:21:46.101816943-04:00"}' | http PUT "http://localhost:8080/shoes/1"  X-Api-User:user123
+// echo '{"id": 29,"brand": "RShpwThAcDuyXYlKkhEqyxEnZ","model": "rieviFhXURExoHrsELXhAagqX","occasion": "bgsCKKOAdkdcBMZCBYsEHwHhu","favorite": 38,"pic": "xRtiCXYATbgHhjlVUFoobIHuX","picture": "AUIfPFpeP04wHF5fYDAeMgVjA0pJGgQwMwM7G2FZAyJYXiwlRitURzsPUCAcOCcbRDY4Cz0oNUATJxVGSyYwTT8HPSJdGB5cAWALQzxiHyoHUA4XCjhj","created_at": "2257-05-16T04:31:44.715969549-04:00","updated_at": "2243-06-27T14:24:20.917684743-04:00"}' | http PUT "https://xinqi.dev:443/shoes/1"  X-Api-User:user123
 func UpdateShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	ctx := initializeContext(r)
 
@@ -225,7 +225,7 @@ func UpdateShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 // @Failure 400 {object} api.HTTPError
 // @Failure 500 {object} api.HTTPError
 // @Router /shoes/{argID} [delete]
-// http DELETE "http://localhost:8080/shoes/1" X-Api-User:user123
+// http DELETE "https://xinqi.dev:443/shoes/1" X-Api-User:user123
 func DeleteShoes(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	ctx := initializeContext(r)
 

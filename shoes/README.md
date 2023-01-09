@@ -40,43 +40,54 @@ Will create a binary `./bin/example`
 ```.bash
 ./bin/example
 ```
-This will launch the web server on localhost:8080
+This will launch the web server on xinqi.dev:443
 
 ## Swagger
 The swagger web ui contains the documentation for the http server, it also provides an interactive interface to exercise the api and view results.
-http://localhost:8080/swagger/index.html
+https://xinqi.dev:443/swagger/index.html
 
 ## REST urls for fetching data
 
 
-* http://localhost:8080/arinternalmetadata_
-* http://localhost:8080/schemamigrations_
-* http://localhost:8080/shoes
+* https://xinqi.dev:443/arinternalmetadata_
+* https://xinqi.dev:443/schemamigrations_
+* https://xinqi.dev:443/shoes
 
 ## Project Generated Details
 ```.bash
 gen \
     --sqltype=mysql \
-    --connstr \
-    doadmin:AVNS_nQrjtn8ilVHqYs6xIim@tcp(dbaas-db-7154856-do-user-13260059-0.b.db.ondigitalocean.com:25060)/shoes_development?parseTime=true \
-    --database \
-    shoes_development \
+    --connstr=doadmin:AVNS_nQrjtn8ilVHqYs6xIim@tcp(dbaas-db-7154856-do-user-13260059-0.b.db.ondigitalocean.com:25060)/shoes_development?parseTime=true \
+    --database=shoes_development \
+    --templateDir=./templates \
+    --model=model \
+    --dao=dao \
+    --api=api \
+    --out=./ \
+    --module=shoes \
     --json \
+    --json-fmt=snake \
     --gorm \
     --guregu \
-    --rest \
-    --out \
-    ./shoes \
-    --module \
-    shoes \
     --mod \
-    --server \
     --makefile \
-    --json-fmt=snake \
+    --server \
+    --overwrite \
+    --host=xinqi.dev \
+    --port=443 \
+    --rest \
+    --listen=:8080 \
+    --scheme=https \
     --generate-dao \
     --generate-proj \
-    --overwrite \
-     
+    --file_naming={{.}} \
+    --model_naming={{FmtFieldName .}} \
+    --swagger_version=1.0 \
+    --swagger_path=/ \
+    --swagger_tos= \
+    --swagger_contact_name=Me \
+    --swagger_contact_url=http://me.com/terms.html \
+    --swagger_contact_email=me@me.com
 ```
 
 

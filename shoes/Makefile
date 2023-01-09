@@ -166,11 +166,11 @@ regen: ## regenerate generated code
      --makefile \
      --server \
      --overwrite \
-     --host=localhost \
-     --port=8080 \
+     --host=xinqi.dev \
+     --port=443 \
      --rest \
      --listen=:8080 \
-     --scheme=http \
+     --scheme=https \
      --generate-dao \
      --generate-proj \
      --file_naming='{{.}}' \
